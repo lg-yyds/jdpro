@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #2.11.3版本青龙一键安装并添加拉库任务
-#端口5500
+#端口2095
 #modify 2022-10-12
 
 Green="\033[32;1m"
@@ -56,7 +56,7 @@ services:
       - ./data/scripts:/ql/scripts
       - ./data/repo:/ql/repo
     ports:
-      - "0.0.0.0:5500:5700"
+      - "0.0.0.0:2095:5700"
     networks:
       - net
     environment:
@@ -71,7 +71,7 @@ EOF
         error "** 错误：容器创建失败，请翻译以上英文报错，Google/百度尝试解决问题！"
     else
         sleep 30
-        ok "青龙面板已启动，请去浏览器访问http://ip:5500进行初始化并登陆进去，完成后回来继续下一步！"
+        ok "青龙面板已启动，请去浏览器访问http://ip:2095进行初始化并登陆进去，完成后回来继续下一步！"
     fi
 
 else
@@ -158,5 +158,5 @@ ql_fix
 read -p "已初在浏览器始化并登陆青龙了?，那就按任意键继续！"
 add_repo
 sleep 2
-ok "已部署完成，2.11.3版本青龙，数据保存路径为$datav，容器名qinglong，访问地址http://ip:5500"
+ok "已部署完成，2.11.3版本青龙，数据保存路径为$datav，容器名qinglong，访问地址http://ip:2095"
 
