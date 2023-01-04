@@ -55,6 +55,7 @@ services:
       - ./data/db:/ql/db
       - ./data/scripts:/ql/scripts
       - ./data/repo:/ql/repo
+      - ./data/deps:/ql/deps
     ports:
       - "0.0.0.0:2095:5700"
     networks:
