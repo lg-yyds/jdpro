@@ -16,7 +16,7 @@
 使用root用户运行下面一串命令，支持Centos/Ubuntu系统
 
 ```
-curl -sSL https://js.dayplus.xyz/https://raw.githubusercontent.com/6dylan6/jdpro/main/docker/ql1key.sh -o install.sh && bash install.sh
+curl -sSL https://raw.githubusercontent.com/lg-yyds/jdpro/main/docker/ql1key.sh -o install.sh && bash install.sh
 ```
 
 ## 拉库指令
