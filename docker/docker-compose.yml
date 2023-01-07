@@ -4,11 +4,11 @@ services:
     image: whyour/qinglong:2.11.3
     container_name: ql
     volumes:
-      - ./data/config:/ql/config
-      - ./data/log:/ql/log
-      - ./data/db:/ql/db
-      - ./data/scripts:/ql/scripts
-      - ./data/repo:/ql/repo
+      -v $PWD/ql/config:/ql/config
+      -v $PWD/ql/log:/ql/log
+      -v $PWD/ql/db:/ql/db
+      -v $PWD/ql/scripts:/ql/scripts
+      -v $PWD/ql/repo:/ql/repo
     ports:
       - "0.0.0.0:2095:5700"
     environment:
