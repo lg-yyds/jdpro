@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #2.11.3版本青龙一键安装并添加拉库任务
-#端口2095
+#端口5500
 #modify 2022-10-12
 
 Green="\033[32;1m"
@@ -34,7 +34,13 @@ ing () {
 if [[ ! "$USER" == "root" ]]; then
   error "警告：请使用root用户操作!~~"
   exit 1
+fi
 
+datav=/root/ql$(date +%Y%m%d)
+mkdir -p $datav  && ql_path=$datav
+
+
+ql_run() {
 if [  -z "$(docker ps -a |awk '{print $NF}'| grep qinglong  2> /dev/null)" ]; then
 cd $ql_path
 cat > docker-compose.yml <<EOF
@@ -44,12 +50,11 @@ services:
     image: whyour/qinglong:2.11.3
     container_name: qinglong
     volumes:
-      -v $PWD/ql/config:/ql/config
-      -v $PWD/ql/log:/ql/log
-      -v $PWD/ql/db:/ql/db
-      -v $PWD/ql/scripts:/ql/scripts
-      -v $PWD/ql/repo:/ql/repo
-      -v $PWD/ql/deps:/ql/deps
+      - ./data/config:/ql/config
+      - ./data/log:/ql/log
+      - ./data/db:/ql/db
+      - ./data/scripts:/ql/scripts
+      - ./data/repo:/ql/repo
     ports:
       - "0.0.0.0:2095:5700"
     networks:
